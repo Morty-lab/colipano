@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_mobile"
+    tools:context=".MainActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/leftlayout"
+        >
+
+        <!-- Title -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#D3D3D3"
+            android:text="ITSD 83 - Mobile Application Development 1 Midterm Exam"
+            android:id="@+id/titleText"
+            android:textSize="28sp"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="32dp"/>
+
+
+    </RelativeLayout>
+
+   <LinearLayout
+       android:layout_width="200dp"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:id="@+id/rightlayout"
+       android:layout_centerVertical="true"
+       android:layout_toRightOf="@id/leftlayout"
+
+       >
+
+       <!-- Login Button -->
+       <com.google.android.material.button.MaterialButton
+           android:layout_width="100dp"
+           android:layout_height="50dp"
+           android:id="@+id/loginButton"
+           android:textColor="#D3D3D3"
+           android:text="Log in"
+           style="@style/Widget.MaterialComponents.Button"
+           android:textSize="12dp"
+           android:layout_gravity="center"
+           android:backgroundTint="#777777"
+           />
+
+       <!-- Register Button -->
+       <com.google.android.material.button.MaterialButton
+           android:layout_width="100dp"
+           android:layout_height="50dp"
+           android:id="@+id/registerButton"
+           android:text="Register"
+           android:textColor="#D3D3D3"
+           android:backgroundTint="#808080"
+           android:textSize="12dp"
+           style="@style/Widget.MaterialComponents.Button"
+           android:layout_below="@id/loginButton"
+           android:layout_gravity="center"
+           android:layout_marginTop="16dp"/>
+
+   </LinearLayout>
+
+
+
+
+    </RelativeLayout>
