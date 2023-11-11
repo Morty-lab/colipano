@@ -36,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:hintEnabled="true"
-                app:hintTextAppearance="@style/Widget.Material3.TextInputEditText.FilledBox">
+                app:hintTextAppearance="@style/Widget.Material3.TextInputEditText.FilledBox"
+                android:id="@+id/unametextinputlayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -51,7 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:hintEnabled="true"
-                app:hintTextAppearance="@style/Widget.Material3.TextInputEditText.FilledBox">
+                app:hintTextAppearance="@style/Widget.Material3.TextInputEditText.FilledBox"
+                android:id="@+id/pwordtextinputlayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

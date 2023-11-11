@@ -13,6 +13,9 @@ public class User {
         this.password = password;
     }
 
+    public User(){
+
+    }
     // Getters and setters for the user attributes
     public String getFullName() {
         return fullName;

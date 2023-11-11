@@ -1,5 +1,7 @@
 package com.example.loginandsignup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +12,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +27,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
     EditText username,password;
+    TextInputLayout user_name,pass;
     Button login;
-    private List<User> userList = new ArrayList<>();
+    private ArrayList<User> userList = new ArrayList<>();
+    DatabaseReference reference;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -34,41 +46,27 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         password = findViewById(R.id.passwordEditText);
         login = findViewById(R.id.login);
         login.setOnClickListener(this);
+        reference = FirebaseDatabase.getInstance().getReference().child("users");
 
-        User newUser = new User("John Doe", "johndoe", "johndoe@example.com", "password123");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userList.clear();
 
-        // Add the User object to the userList
-        userList.add(newUser);
-        String Intent = getIntent().getStringExtra("Intent").toString();
-        System.out.println(Intent);
+                for(DataSnapshot userSnap: snapshot.getChildren()){
+                    User user = userSnap.getValue(User.class);
 
-        if ( "register".equals(Intent)) {
-            String fullName = getIntent().getStringExtra("fullName");
-            String username = getIntent().getStringExtra("username");
-            String email = getIntent().getStringExtra("email");
-            String password = getIntent().getStringExtra("password");
-            // Create a new user
-            User user = new User(fullName, username, email, password);
-
-            // Add the user to the list
-            userList.add(user);
-            for (User i : userList) {
-                Log.d("UserList", "Full Name: " + i.getFullName());
-                Log.d("UserList", "Username: " + i.getUsername());
-                Log.d("UserList", "Email: " + i.getEmail());
-                Log.d("UserList", "Password: " + i.getPassword());
+                    userList.add(user);
+                    Log.d("user",user.getUsername());
+                }
             }
 
-        } else{
-            Toast.makeText(this,"main",Toast.LENGTH_SHORT).show();
-            Log.d("main",Intent);
-            for (User i : userList) {
-                Log.d("UserList", "Full Name: " + i.getFullName());
-                Log.d("UserList", "Username: " + i.getUsername());
-                Log.d("UserList", "Email: " + i.getEmail());
-                Log.d("UserList", "Password: " + i.getPassword());
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
-        }
+        });
+
 
 
     }
@@ -102,12 +100,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         String pword = password.getText().toString();
 
         if (isLoginValid(uname, pword)) {
+            //clear text utils
+            username.setText("");
+            password.setText("");
             // Valid login, proceed to a new activity or perform other actions
             Intent intent = new Intent(this, Homepage.class);
             startActivity(intent);
         } else {
             // Invalid login, show an error message
-            Toast.makeText(this, "Invalid username or password. Please check and try again.", Toast.LENGTH_SHORT).show();
+            user_name = findViewById(R.id.unametextinputlayout);
+            pass = findViewById(R.id.pwordtextinputlayout);
+            user_name.setError("Invalid Username");
+            pass.setError("Invalid Password");
+//            Toast.makeText(this, "Invalid username or password. Please check and try again.", Toast.LENGTH_SHORT).show();
         }
     }
 }
