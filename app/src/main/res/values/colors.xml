@@ -2,9 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary">#777777</color>
-    <color name="secondary">#808080</color>
-    <color name="button_bg">#545454</color>
+    <color name="primary">#800080</color>
+    <color name="secondary">#FF6B6B</color>
 
 
 </resources>

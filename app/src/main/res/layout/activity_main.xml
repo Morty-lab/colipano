@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_mobile"
@@ -8,66 +9,97 @@
 
 
 
-    <RelativeLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:id="@+id/leftlayout"
-        >
 
         <!-- Title -->
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:textColor="#D3D3D3"
             android:text="ITSD 83 - Mobile Application Development 1 Midterm Exam"
             android:id="@+id/titleText"
-            android:textSize="28sp"
+            android:textSize="20sp"
             style="@style/Widget.MaterialComponents.TextView"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="32dp"/>
+            android:gravity="center"
+            android:layout_marginTop="150dp"
+            />
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
 
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:backgroundTint="@color/primary">
 
-   <LinearLayout
-       android:layout_width="200dp"
-       android:layout_height="wrap_content"
-       android:orientation="vertical"
-       android:id="@+id/rightlayout"
-       android:layout_centerVertical="true"
-       android:layout_toRightOf="@id/leftlayout"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:layout_gravity="center"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
 
-       >
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintEnabled="true"
+                android:id="@+id/usernameinputlayout"
+                app:hintTextAppearance="@style/Widget.Material3.TextInputEditText.FilledBox">
 
-       <!-- Login Button -->
-       <com.google.android.material.button.MaterialButton
-           android:layout_width="100dp"
-           android:layout_height="50dp"
-           android:id="@+id/loginButton"
-           android:textColor="#D3D3D3"
-           android:text="Log in"
-           style="@style/Widget.MaterialComponents.Button"
-           android:textSize="12dp"
-           android:layout_gravity="center"
-           android:backgroundTint="#777777"
-           />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:id="@+id/usernameEditText"/>
 
-       <!-- Register Button -->
-       <com.google.android.material.button.MaterialButton
-           android:layout_width="100dp"
-           android:layout_height="50dp"
-           android:id="@+id/registerButton"
-           android:text="Register"
-           android:textColor="#D3D3D3"
-           android:backgroundTint="#808080"
-           android:textSize="12dp"
-           style="@style/Widget.MaterialComponents.Button"
-           android:layout_below="@id/loginButton"
-           android:layout_gravity="center"
-           android:layout_marginTop="16dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-   </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintEnabled="true"
+                android:id="@+id/passwordinputlayout"
+                app:hintTextAppearance="@style/Widget.Material3.TextInputEditText.FilledBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:id="@+id/passwordEditText"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/login"
+                android:text="Login"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/primary"
+                style="@style/Widget.MaterialComponents.Button"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/register"
+                android:text="Register"
+                android:backgroundTint="@color/secondary"
+                style="@style/Widget.MaterialComponents.Button"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     </RelativeLayout>
